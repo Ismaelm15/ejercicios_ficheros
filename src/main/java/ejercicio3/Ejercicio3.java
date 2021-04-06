@@ -25,9 +25,9 @@ public class Ejercicio3 {
         try ( BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
             do {
                 mayusminus = rnd.nextInt(2);
-                if (mayusminus == 0) {
+                if (mayusminus == 0) {//para mayusculas
                     buffer = (char)(rnd.nextInt(26) + 'A');
-                } else {
+                } else {//para minusculas
                     buffer=(char)(rnd.nextInt(26) + 'a');
                 }
                 flujo.write(buffer);
