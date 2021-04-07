@@ -44,10 +44,10 @@ public class Ejercicio6 {
                         }
                     }
                 }
- 
+
                 System.out.println(linea);
                 System.out.println();
-                
+
                 if (salir) {
                     break;
                 }
