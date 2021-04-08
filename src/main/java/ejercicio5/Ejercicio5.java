@@ -35,8 +35,8 @@ public class Ejercicio5 {
                 // Guarda la línea completa en un String
                 linea = datosFichero.nextLine();
                 // Se guarda en el array de String cada elemento de la
-                // línea en función del carácter separador de campos del fichero CSV
-                tokens = linea.split(";");//Que es?????
+              
+                tokens = linea.split(";");
                 numeros=linea.split("\t");
                 for(int i=0; i<numeros.length;i++){
                 resultado+=Integer.parseInt(numeros[i]);
@@ -49,7 +49,7 @@ public class Ejercicio5 {
                 System.out.println();
                 
             }
-            System.out.println(resultado);
+            System.out.println("El resultado es "+resultado);
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         }
