@@ -17,7 +17,7 @@ public class Ejercicio5 {
      public static void main(String[] args) {
 
         // Fichero a leer con datos de ejemplo
-        String idFichero = "./src/main/java/ejercicio1/array.txt";
+        String idFichero = "./src/main/java/ejercicio5/array.txt";
 
         // Variables para guardar los datos que se van leyendo
         String[] tokens;
