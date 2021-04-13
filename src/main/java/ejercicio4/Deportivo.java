@@ -12,25 +12,34 @@ package ejercicio4;
 public class Deportivo extends Vehiculo {
 
     public Deportivo() {
+        String matricula="";
         this.setTipo(1);
         generarAleatorio();
-        this.setMatricula(Integer.toString(rnd.nextInt(500000)));
-    }
+        for (int i = 0; i < 3; i++) {
+            char letra = (char) (rnd.nextInt(26) + 'A');
 
-    public Deportivo(String matricula, String marca, String modelo, String color, double tarifa, boolean disponible) {
+            matricula = matricula + letra;
+        }
+
+        this.setMatricula(Integer.toString(rnd.nextInt(500000)) + matricula);
+
+    
+}
+
+public Deportivo(String matricula, String marca, String modelo, String color, double tarifa, boolean disponible) {
         super(matricula, marca, modelo, color, tarifa, disponible);
         this.setTipo(1);
     }
 
     @Override
-    public String toString() {
+public String toString() {
         return super.toString();
     }
 
     public void generarAleatorio() {
         seed = rnd.nextInt(4);
         if (seed == 0) {
-            
+
             this.setMarca("Ferrari");
             this.setModelo("Kangoo");
             this.setColor("Rojo");
@@ -38,7 +47,7 @@ public class Deportivo extends Vehiculo {
             this.setDisponible(true);
         }
         if (seed == 1) {
-            
+
             this.setMarca("Ford");
             this.setModelo("Tango");
             this.setColor("Azul");
@@ -46,7 +55,7 @@ public class Deportivo extends Vehiculo {
             this.setDisponible(false);
         }
         if (seed == 2) {
-            
+
             this.setMarca("Tesla");
             this.setModelo("XF1");
             this.setColor("Gris");
@@ -54,7 +63,7 @@ public class Deportivo extends Vehiculo {
             this.setDisponible(true);
         }
         if (seed == 3) {
-            
+
             this.setMarca("Kia");
             this.setModelo("Karens");
             this.setColor("Blanco");

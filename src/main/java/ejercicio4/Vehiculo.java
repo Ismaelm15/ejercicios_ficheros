@@ -22,6 +22,7 @@ public abstract class Vehiculo {
     private boolean disponible;
     Random rnd= new Random();
     int seed;
+
     public Vehiculo() {
     }
 
@@ -100,7 +101,7 @@ public abstract class Vehiculo {
 
     @Override
     public String toString() {
-        return tipo+':' + matricula + ':' + marca + ':' + modelo + ':' + color + ':' + tarifa + ':' + disponible;
+        return ""+tipo+':' + matricula + ':' + marca + ':' + modelo + ':' + color + ':' + tarifa + ':' + disponible;
     }
 
     @Override

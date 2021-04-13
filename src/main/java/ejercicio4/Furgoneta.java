@@ -12,9 +12,17 @@ package ejercicio4;
 public class Furgoneta extends Vehiculo {
 
     public Furgoneta() {
+        String matricula = "";
         this.setTipo(2);
         generarAleatorio();
-        this.setMatricula(Integer.toString(rnd.nextInt(500000)));
+        for (int i = 0; i < 3; i++) {
+            char letra = (char) (rnd.nextInt(26) + 'A');
+
+            matricula = matricula + letra;
+        }
+
+        this.setMatricula(Integer.toString(rnd.nextInt(500000)) + matricula);
+
     }
 
     public Furgoneta(String matricula, String marca, String modelo, String color, double tarifa, boolean disponible) {

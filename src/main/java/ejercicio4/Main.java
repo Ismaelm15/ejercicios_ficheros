@@ -22,7 +22,7 @@ public class Main {
     public static void main(String[] args) {
 
         // Fichero a crear. Ruta relativa a la carpeta raíz del proyecto
-        String idFichero = "./src/main/java/ejercicio4/array.txt";
+        String idFichero = "./src/main/java/ejercicio4/array.csv";
 
         ArrayList<Vehiculo> lista = new ArrayList<>();
 
@@ -37,7 +37,8 @@ public class Main {
         // Estructura try-with-resources. Instancia el objeto con el fichero a escribir
         // y se encarga de cerrar el recurso "flujo" una vez finalizadas las operaciones
         try ( BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
-
+            flujo.write("Tipo:Matricula:Marca:Modelo:Color:Tarifa:Disponible");
+            flujo.newLine();
             for (Vehiculo vehiculo : lista) {
 
                 flujo.write(vehiculo.toString());
@@ -47,6 +48,7 @@ public class Main {
             // Metodo fluh() guarda cambios en disco 
             flujo.flush();
             System.out.println("Fichero " + idFichero + " creado correctamente.");
+
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
