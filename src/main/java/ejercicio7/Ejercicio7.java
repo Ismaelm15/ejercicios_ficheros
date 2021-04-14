@@ -29,7 +29,7 @@ public class Ejercicio7 {
         String linea;
         ArrayList<Vehiculo> lista = new ArrayList<>();
         System.out.println("Leyendo el fichero: " + idFichero);
-        int nvehiculos=0;
+        int nvehiculos = 0;
         // Inicialización del flujo "datosFichero" en función del archivo llamado "idFichero"
         // Estructura try-with-resources. Permite cerrar los recursos una vez finalizadas
         // las operaciones con el archivo
@@ -42,28 +42,27 @@ public class Ejercicio7 {
                 // Se guarda en el array de String cada elemento de la
                 // línea en función del carácter separador de campos del fichero CSV
                 tokens = linea.split(":");
- 
-                    if ("0".equals(tokens[0])) {
-                        lista.add(new Coche(tokens[1], tokens[2], tokens[3], tokens[4],
-                                Double.parseDouble(tokens[5]), Boolean.parseBoolean(tokens[6])));
-                    } else if ("1".equals(tokens[0])) {
-                        lista.add(new Furgoneta(tokens[1], tokens[2], tokens[3], tokens[4],
-                                Double.parseDouble(tokens[5]), Boolean.parseBoolean(tokens[6])));
-                    } else {
-                        lista.add(new Deportivo(tokens[1], tokens[2], tokens[3], tokens[4],
-                                Double.parseDouble(tokens[5]), Boolean.parseBoolean(tokens[6])));
-                    }
-                    
-                
-nvehiculos++;
-            } 
+
+                if ("0".equals(tokens[0])) {
+                    lista.add(new Coche(tokens[1], tokens[2], tokens[3], tokens[4],
+                            Double.parseDouble(tokens[5]), Boolean.parseBoolean(tokens[6])));
+                } else if ("1".equals(tokens[0])) {
+                    lista.add(new Furgoneta(tokens[1], tokens[2], tokens[3], tokens[4],
+                            Double.parseDouble(tokens[5]), Boolean.parseBoolean(tokens[6])));
+                } else {
+                    lista.add(new Deportivo(tokens[1], tokens[2], tokens[3], tokens[4],
+                            Double.parseDouble(tokens[5]), Boolean.parseBoolean(tokens[6])));
+                }
+
+
+            }
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
-        }             
-        Collections.sort(lista, (c1,c2)->c1.getMarca().compareTo(c2.getMarca()));
+        }
+        Collections.sort(lista, (c1, c2) -> c1.getMarca().compareTo(c2.getMarca()));
         for (Vehiculo vehiculo : lista) {
-                    System.out.println(vehiculo.toString());
-                }
-                System.out.println(nvehiculos);
+            System.out.println(vehiculo.toString());
+        }
+
     }
 }
