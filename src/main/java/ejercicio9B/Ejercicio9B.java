@@ -5,10 +5,7 @@
  */
 package ejercicio9B;
 
-import ejercicio7.Coche;
-import ejercicio7.Deportivo;
-import ejercicio7.Furgoneta;
-import ejercicio7.Vehiculo;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -32,14 +29,16 @@ public class Ejercicio9B {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        String idFichero = "/home/ismael/NetBeansProjects/ejerciciosFicheros/src/main/java/ejercicio4/array.csv";
-        String idFichero1 = "/home/ismael/NetBeansProjects/ejerciciosFicheros/src/main/java/ejercicio9B/vehiculos0.csv";
-        String idFichero2 = "/home/ismael/NetBeansProjects/ejerciciosFicheros/src/main/java/ejercicio9B/vehiculos1.csv";
-        String idFichero3 = "/home/ismael/NetBeansProjects/ejerciciosFicheros/src/main/java/ejercicio9B/vehiculos2.csv";
+        String idFichero = "./src/main/java/ejercicio4/array.csv";
+        String idFichero1 = "./src/main/java/ejercicio9B/vehiculos0.csv";
+        String idFichero2 = "./src/main/java/ejercicio9B/vehiculos1.csv";
+        String idFichero3 = "./src/main/java/ejercicio9B/vehiculos2.csv";
         // Variables para guardar los datos que se van leyendo
         String[] tokens;
         String linea;
         ArrayList<Vehiculo> lista = new ArrayList<>();
+        ArrayList<Vehiculo> lista1 = new ArrayList<>();
+        ArrayList<Vehiculo> lista2 = new ArrayList<>();
         System.out.println("Leyendo el fichero: " + idFichero);
         int nvehiculos = 0;
         // Inicialización del flujo "datosFichero" en función del archivo llamado "idFichero"
@@ -59,10 +58,10 @@ public class Ejercicio9B {
                     lista.add(new Coche(tokens[1], tokens[2], tokens[3], tokens[4],
                             Double.parseDouble(tokens[5]), Boolean.parseBoolean(tokens[6])));
                 } else if ("1".equals(tokens[0])) {
-                    lista.add(new Furgoneta(tokens[1], tokens[2], tokens[3], tokens[4],
+                    lista1.add(new Furgoneta(tokens[1], tokens[2], tokens[3], tokens[4],
                             Double.parseDouble(tokens[5]), Boolean.parseBoolean(tokens[6])));
                 } else {
-                    lista.add(new Deportivo(tokens[1], tokens[2], tokens[3], tokens[4],
+                    lista2.add(new Deportivo(tokens[1], tokens[2], tokens[3], tokens[4],
                             Double.parseDouble(tokens[5]), Boolean.parseBoolean(tokens[6])));
                 }
                 
@@ -71,25 +70,14 @@ public class Ejercicio9B {
             System.out.println(e.getMessage());
         }
         Collections.sort(lista, (c1, c2) -> c1.getMarca().compareTo(c2.getMarca()));
-        for (Vehiculo vehiculo : lista) {
-            System.out.println(vehiculo.toString());
-        }
+        Collections.sort(lista1, (c1, c2) -> c1.getMarca().compareTo(c2.getMarca()));
+        Collections.sort(lista2, (c1, c2) -> c1.getMarca().compareTo(c2.getMarca()));
         crearFichero(idFichero1);
         crearFichero(idFichero2);
         crearFichero(idFichero3);
-        for (Vehiculo vehiculo : lista) {
-            switch (vehiculo.getTipo()) {
-                case 0:
-                    escribirFichero(idFichero1, lista);
-                    break;
-                case 1:
-                    escribirFichero(idFichero2, lista);
-                    break;
-                default:
-                    escribirFichero(idFichero3, lista);
-                    break;
-            }
-        }
+        escribirFichero(idFichero1, lista);
+        escribirFichero(idFichero2, lista1);
+        escribirFichero(idFichero3, lista2);
     }
     
     public static void crearFichero(String ruta) {
@@ -105,17 +93,17 @@ public class Ejercicio9B {
         }
     }
     
-    public static void escribirFichero(String idFichero, ArrayList<Vehiculo> lista) {
+    public static void escribirFichero(String idFichero, ArrayList<Vehiculo> v) {
         try ( BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
             flujo.write("Tipo:Matricula:Marca:Modelo:Color:Tarifa:Disponible");
+
             flujo.newLine();
-            for (Vehiculo vehiculo : lista) {
-                
+            for (Vehiculo vehiculo : v) {
+
                 flujo.write(vehiculo.toString());
                 flujo.newLine();
+
             }
-            // Metodo fluh() guarda cambios en disco 
-            flujo.flush();
             // Metodo fluh() guarda cambios en disco 
             flujo.flush();
         } catch (IOException e) {
